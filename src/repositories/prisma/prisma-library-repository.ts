@@ -3,6 +3,13 @@ import { prisma } from "../../libs/prisma";
 import { LibraryRepository } from "../../repositories/library-repository";
 
 export class PrismaLibraryRepository implements LibraryRepository {
+  async findById(id: string): Promise<Library | null | undefined> {
+    return prisma.library.findFirst({
+      where: {
+        id: id,
+      },
+    });
+  }
   async create(library: Library): Promise<void> {
     await prisma.library.create({
       data: {

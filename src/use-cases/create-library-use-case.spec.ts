@@ -3,8 +3,13 @@ import { CreateLibraryUseCase } from "./create-library-use-case";
 
 const create = jest.fn();
 const findByName = jest.fn();
+const findById = jest.fn();
 
-const createLibraryUseCase = new CreateLibraryUseCase({ create, findByName });
+const createLibraryUseCase = new CreateLibraryUseCase({
+  create,
+  findByName,
+  findById,
+});
 
 describe("Create Library Use Case", () => {
   it("should be defined", () => {
@@ -61,5 +66,26 @@ describe("Create Library Use Case", () => {
       },
     };
     await expect(createLibraryUseCase.execute(library)).rejects.toThrow();
+  });
+  it("should throw error when library already exists", async () => {
+    const library: Library = {
+      name: "Test",
+      adminId: "test",
+      address: {
+        street: "street",
+        city: "city",
+        state: "state",
+        zip: "zip",
+        streetNumber: "streetNumber",
+        complement: "complement",
+        latitude: "latitude",
+        longitude: "longitude",
+      },
+    };
+    findByName.mockResolvedValue(true);
+
+    await expect(createLibraryUseCase.execute(library)).rejects.toEqual(
+      new Error("Library already exists")
+    );
   });
 });

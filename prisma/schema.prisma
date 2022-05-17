@@ -18,6 +18,7 @@ model Library {
   address   Address? @relation(fields: [addressId], references: [id])
   addressId String?
 
+  LibraryBook LibraryBook[]
   @@map("libraries")
 }
 
@@ -33,6 +34,39 @@ model Address {
   longitude    String?
 
   Library Library[]
+  Book    Book[]
 
   @@map("addresses")
+}
+
+enum State {
+  NEW
+  USED
+  DAMAGED
+}
+
+model Book {
+  id          String   @id @default(uuid())
+  title       String
+  edition     String
+  year        Int
+  releaseDate DateTime
+  state       State
+  inventory   Int
+
+  addressId String
+  address   Address? @relation(fields: [addressId], references: [id])
+
+  LibraryBook LibraryBook[]
+  @@map("books")
+}
+
+model LibraryBook {
+  id String @id @default(uuid())
+
+  libraryId String
+  library   Library @relation(fields: [libraryId], references: [id])
+
+  bookId String
+  book   Book   @relation(fields: [bookId], references: [id])
 }

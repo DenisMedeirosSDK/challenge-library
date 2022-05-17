@@ -1,10 +1,21 @@
-import { BookStatus, CreateBook } from "../dtos/book-dto";
+import { BookState, CreateBook } from "../dtos/book-dto";
 import { CreateBookUseCase } from "./create-book-use-case";
 
 const create = jest.fn();
 const findByTitle = jest.fn();
+const findLibraryById = jest.fn();
+const findLibraryByName = jest.fn();
 
-const createBookUseCase = new CreateBookUseCase({ create, findByTitle });
+const createLibrary = jest.fn();
+
+const createBookUseCase = new CreateBookUseCase(
+  { create, findByTitle },
+  {
+    findById: findLibraryById,
+    create: createLibrary,
+    findByName: findLibraryByName,
+  }
+);
 
 describe("Create Book Use Case", () => {
   it("should be defined", () => {
@@ -16,7 +27,7 @@ describe("Create Book Use Case", () => {
       edition: "Test",
       year: 2020,
       releaseDate: new Date(Date.now()),
-      status: BookStatus.NEW,
+      state: BookState.NEW,
       libraryId: "Test",
       inventory: 1,
       address: {
@@ -31,6 +42,8 @@ describe("Create Book Use Case", () => {
       },
     };
 
+    findLibraryById.mockResolvedValue(true);
+
     await createBookUseCase.execute(book);
     expect(create).toHaveBeenCalledWith(book);
   });
@@ -40,7 +53,7 @@ describe("Create Book Use Case", () => {
       edition: "Test",
       year: 2020,
       releaseDate: new Date(Date.now()),
-      status: BookStatus.NEW,
+      state: BookState.NEW,
       libraryId: "Test",
       inventory: 1,
       address: {
@@ -65,7 +78,7 @@ describe("Create Book Use Case", () => {
       edition: "Test",
       year: 2020,
       releaseDate: new Date(Date.now()),
-      status: BookStatus.NEW,
+      state: BookState.NEW,
       libraryId: "Test",
       inventory: 1,
       address: {
@@ -92,7 +105,7 @@ describe("Create Book Use Case", () => {
       edition: "Test",
       year: 2020,
       releaseDate: new Date(Date.now()),
-      status: BookStatus.NEW,
+      state: BookState.NEW,
       libraryId: "Test",
       inventory: -1,
       address: {
@@ -111,6 +124,60 @@ describe("Create Book Use Case", () => {
 
     await expect(createBookUseCase.execute(book)).rejects.toEqual(
       new Error("Inventory must be greater or equal than 0")
+    );
+  });
+  it("should throw error when libraryId is not provided", async () => {
+    const book: CreateBook = {
+      title: "Test",
+      edition: "Test",
+      year: 2020,
+      releaseDate: new Date(Date.now()),
+      state: BookState.NEW,
+      libraryId: "",
+      inventory: 1,
+      address: {
+        street: "street",
+        city: "city",
+        state: "state",
+        zip: "zip",
+        streetNumber: "streetNumber",
+        complement: "complement",
+        latitude: "latitude",
+        longitude: "longitude",
+      },
+    };
+
+    await expect(createBookUseCase.execute(book)).rejects.toEqual(
+      new Error("Library is required")
+    );
+  });
+
+  it("should throw error when library does not exists", async () => {
+    const book: CreateBook = {
+      title: "Test 3",
+      edition: "Test",
+      year: 2020,
+      releaseDate: new Date(Date.now()),
+      state: BookState.NEW,
+      libraryId: "Test",
+      inventory: 1,
+      address: {
+        street: "street",
+        city: "city",
+        state: "state",
+        zip: "zip",
+        streetNumber: "streetNumber",
+        complement: "complement",
+        latitude: "latitude",
+        longitude: "longitude",
+      },
+    };
+
+    findByTitle.mockResolvedValue(false);
+    findLibraryById.mockResolvedValue(null);
+
+    await expect(createBookUseCase.execute(book)).rejects.toEqual(
+      new Error("Library does not exists")
     );
   });
 });

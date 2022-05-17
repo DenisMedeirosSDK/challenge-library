@@ -44,3 +44,9 @@ export interface Address {
   latitude?: string;
   longitude?: string;
 }
+
+export interface LibraryBook {
+  id: string;
+  libraryId: string;
+  bookId: string;
+}

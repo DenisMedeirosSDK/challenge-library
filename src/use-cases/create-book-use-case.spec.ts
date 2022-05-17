@@ -3,13 +3,16 @@ import { CreateBookUseCase } from "./create-book-use-case";
 
 const create = jest.fn();
 const findByTitle = jest.fn();
+const update = jest.fn();
+const findById = jest.fn();
+const findLibraryBookId = jest.fn();
+
 const findLibraryById = jest.fn();
 const findLibraryByName = jest.fn();
-
 const createLibrary = jest.fn();
 
 const createBookUseCase = new CreateBookUseCase(
-  { create, findByTitle },
+  { create, findByTitle, update, findById, findLibraryBookId },
   {
     findById: findLibraryById,
     create: createLibrary,

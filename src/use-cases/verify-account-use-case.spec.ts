@@ -1,0 +1,49 @@
+import jsonwebtoken from "jsonwebtoken";
+import { VerifyAccountUseCase } from "./verify-account-use-case";
+
+const create = jest.fn();
+const findByEmail = jest.fn();
+const findByUsername = jest.fn();
+const sendMail = jest.fn();
+const saveToken = jest.fn();
+const findToken = jest.fn();
+const update = jest.fn();
+
+const verifyAccountUseCase = new VerifyAccountUseCase({
+  create,
+  findByEmail,
+  findByUsername,
+  saveToken,
+  findToken,
+  update,
+});
+
+describe("Verify Account Use Case", () => {
+  it("should be defined", () => {
+    expect(VerifyAccountUseCase).toBeDefined();
+  });
+  it("should be able to verify account", async () => {
+    const hashSpy = jest
+      .spyOn(jsonwebtoken, "verify")
+      .mockImplementation(() => Promise.resolve({ verified: "true" }));
+
+    const token = "Test";
+    const decoded = {
+      sub: "Test",
+    };
+
+    findToken.mockResolvedValue(true);
+    await verifyAccountUseCase.execute(token);
+
+    expect(hashSpy).toHaveBeenCalledTimes(1);
+    expect(findToken).toHaveBeenCalledWith(token);
+  });
+  it("should throw error when token not found", async () => {
+    const token = "Test";
+
+    findToken.mockResolvedValue(false);
+    await expect(verifyAccountUseCase.execute(token)).rejects.toThrow(
+      "Token not found"
+    );
+  });
+});

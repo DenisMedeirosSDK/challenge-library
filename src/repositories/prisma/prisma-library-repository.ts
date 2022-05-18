@@ -3,6 +3,16 @@ import { prisma } from "../../libs/prisma";
 import { LibraryRepository } from "../../repositories/library-repository";
 
 export class PrismaLibraryRepository implements LibraryRepository {
+  async updateAdmin(id: string, adminId: string): Promise<void> {
+    await prisma.library.update({
+      where: {
+        id,
+      },
+      data: {
+        adminId,
+      },
+    });
+  }
   async findById(id: string): Promise<Library | null | undefined> {
     return prisma.library.findFirst({
       where: {

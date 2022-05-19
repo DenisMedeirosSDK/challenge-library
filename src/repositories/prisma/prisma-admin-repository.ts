@@ -3,6 +3,23 @@ import { prisma } from "../../libs/prisma";
 import { AdminRepository } from "../../repositories/admin-repository";
 
 export class PrismaAdminRepository implements AdminRepository {
+  async findById(id: string): Promise<Admin | null> {
+    return await prisma.user.findFirst({
+      where: {
+        id,
+      },
+    });
+  }
+  async updatePassword(adminId: string, password: string): Promise<void> {
+    await prisma.user.update({
+      where: {
+        id: adminId,
+      },
+      data: {
+        password,
+      },
+    });
+  }
   async findToken(token: string): Promise<any> {
     return await prisma.tokenActive.findFirst({
       where: {

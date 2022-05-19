@@ -4,11 +4,15 @@ import { CreateLibraryUseCase } from "./create-library-use-case";
 const create = jest.fn();
 const findByName = jest.fn();
 const findById = jest.fn();
+const updateAdmin = jest.fn();
+const deleteAdmin = jest.fn();
 
 const createLibraryUseCase = new CreateLibraryUseCase({
   create,
   findByName,
   findById,
+  updateAdmin,
+  deleteAdmin,
 });
 
 describe("Create Library Use Case", () => {

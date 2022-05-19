@@ -9,11 +9,14 @@ const sendMail = jest.fn();
 const saveToken = jest.fn();
 const findToken = jest.fn();
 const update = jest.fn();
+const findById = jest.fn();
+const updatePassword = jest.fn();
 
 const libraryCreate = jest.fn();
 const libraryFindById = jest.fn();
 const libraryFindByName = jest.fn();
 const libraryUpdateAdmin = jest.fn();
+const libraryDeleteAdmin = jest.fn();
 
 const createAdminUseCase = new CreateAdminUseCase(
   {
@@ -23,6 +26,8 @@ const createAdminUseCase = new CreateAdminUseCase(
     saveToken,
     findToken,
     update,
+    findById,
+    updatePassword,
   },
   {
     sendMail,
@@ -32,6 +37,7 @@ const createAdminUseCase = new CreateAdminUseCase(
     findById: libraryFindById,
     findByName: libraryFindByName,
     updateAdmin: libraryUpdateAdmin,
+    deleteAdmin: libraryDeleteAdmin,
   }
 );
 

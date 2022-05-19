@@ -4,10 +4,11 @@ import { VerifyAccountUseCase } from "./verify-account-use-case";
 const create = jest.fn();
 const findByEmail = jest.fn();
 const findByUsername = jest.fn();
-const sendMail = jest.fn();
 const saveToken = jest.fn();
 const findToken = jest.fn();
 const update = jest.fn();
+const findById = jest.fn();
+const updatePassword = jest.fn();
 
 const verifyAccountUseCase = new VerifyAccountUseCase({
   create,
@@ -16,6 +17,8 @@ const verifyAccountUseCase = new VerifyAccountUseCase({
   saveToken,
   findToken,
   update,
+  findById,
+  updatePassword,
 });
 
 describe("Verify Account Use Case", () => {
@@ -23,7 +26,7 @@ describe("Verify Account Use Case", () => {
     expect(VerifyAccountUseCase).toBeDefined();
   });
   it("should be able to verify account", async () => {
-    const hashSpy = jest
+    const jsonwebtokenSpy = jest
       .spyOn(jsonwebtoken, "verify")
       .mockImplementation(() => Promise.resolve({ verified: "true" }));
 
@@ -35,7 +38,7 @@ describe("Verify Account Use Case", () => {
     findToken.mockResolvedValue(true);
     await verifyAccountUseCase.execute(token);
 
-    expect(hashSpy).toHaveBeenCalledTimes(1);
+    expect(jsonwebtokenSpy).toHaveBeenCalledTimes(1);
     expect(findToken).toHaveBeenCalledWith(token);
   });
   it("should throw error when token not found", async () => {

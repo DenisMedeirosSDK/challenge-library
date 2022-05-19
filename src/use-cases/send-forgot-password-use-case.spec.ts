@@ -7,6 +7,8 @@ const findByUsername = jest.fn();
 const findToken = jest.fn();
 const saveToken = jest.fn();
 const update = jest.fn();
+const findById = jest.fn();
+const updatePassword = jest.fn();
 
 const sendMail = jest.fn();
 
@@ -18,6 +20,8 @@ const sendForgotPasswordUseCase = new SendForgotPasswordUseCase(
     findToken,
     saveToken,
     update,
+    findById,
+    updatePassword,
   },
   {
     sendMail,

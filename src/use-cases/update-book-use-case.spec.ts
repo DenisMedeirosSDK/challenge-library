@@ -11,6 +11,7 @@ const findLibraryById = jest.fn();
 const findLibraryByName = jest.fn();
 const createLibrary = jest.fn();
 const updateAdminLibrary = jest.fn();
+const deleteAdminLibrary = jest.fn();
 
 const updateBookUseCase = new UpdateBookUseCase(
   {
@@ -25,6 +26,7 @@ const updateBookUseCase = new UpdateBookUseCase(
     create: createLibrary,
     findByName: findLibraryByName,
     updateAdmin: updateAdminLibrary,
+    deleteAdmin: deleteAdminLibrary,
   }
 );
 

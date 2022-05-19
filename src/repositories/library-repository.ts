@@ -5,4 +5,5 @@ export interface LibraryRepository {
   findByName(name: string): Promise<Library | null | undefined>;
   findById(id: string): Promise<Library | null | undefined>;
   updateAdmin(id: string, adminId: string): Promise<void>;
+  deleteAdmin(id: string): Promise<void>;
 }

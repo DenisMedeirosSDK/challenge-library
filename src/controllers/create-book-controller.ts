@@ -6,20 +6,20 @@ import { CreateBookUseCase } from "../use-cases/create-book-use-case";
 
 const schema = Joi.object({
   title: Joi.string().min(3).max(256).required(),
-  edition: Joi.string().alphanum().min(2).max(4).required(),
+  edition: Joi.string().min(2).max(4).required(),
   year: Joi.number().required(),
   releaseDate: Joi.date().required(),
   state: Joi.string().valid("NEW", "USED", "DAMAGED").required(),
   libraryId: Joi.string().required(),
   inventory: Joi.number().positive().required(),
-  street: Joi.string().alphanum().min(3).max(256).required(),
-  city: Joi.string().alphanum().min(3).max(256).required(),
+  street: Joi.string().min(3).max(256).required(),
+  city: Joi.string().min(3).max(256).required(),
   stateAddress: Joi.string().min(2).max(2).required(),
-  zip: Joi.string().alphanum().required(),
-  streetNumber: Joi.string().alphanum(),
-  complement: Joi.string().alphanum().min(3).max(256).required(),
-  latitude: Joi.string().alphanum(),
-  longitude: Joi.string().alphanum(),
+  zip: Joi.string().required(),
+  streetNumber: Joi.string(),
+  complement: Joi.string().min(3).max(256).required(),
+  latitude: Joi.string(),
+  longitude: Joi.string(),
 });
 
 export class CreateBookController {

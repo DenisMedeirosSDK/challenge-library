@@ -6,7 +6,7 @@ import { UpdateBookUseCase } from "../use-cases/update-book-use-case";
 
 const schema = Joi.object({
   id: Joi.string().required(),
-  edition: Joi.string().alphanum().min(2).max(4),
+  edition: Joi.string().min(2).max(4),
   state: Joi.string().valid("NEW", "USED", "DAMAGED"),
   library: Joi.string(),
   libraryBookId: Joi.alternatives().conditional("library", {

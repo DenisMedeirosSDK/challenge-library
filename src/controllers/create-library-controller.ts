@@ -5,16 +5,16 @@ import { PrismaLibraryRepository } from "../repositories/prisma/prisma-library-r
 import { CreateLibraryUseCase } from "../use-cases/create-library-use-case";
 
 const schema = Joi.object({
-  name: Joi.string().alphanum().min(3).max(256).required(),
+  name: Joi.string().min(3).max(256).required(),
   adminId: Joi.string(),
-  street: Joi.string().alphanum().min(3).max(256).required(),
-  city: Joi.string().alphanum().min(3).max(256).required(),
+  street: Joi.string().min(3).max(256).required(),
+  city: Joi.string().min(3).max(256).required(),
   state: Joi.string().min(2).max(2).required(),
-  zip: Joi.string().alphanum().required(),
-  streetNumber: Joi.string().alphanum(),
-  complement: Joi.string().alphanum().min(3).max(256).required(),
-  latitude: Joi.string().alphanum(),
-  longitude: Joi.string().alphanum(),
+  zip: Joi.string().required(),
+  streetNumber: Joi.string(),
+  complement: Joi.string().min(3).max(256).required(),
+  latitude: Joi.string(),
+  longitude: Joi.string(),
 });
 
 export class CreateLibraryController {

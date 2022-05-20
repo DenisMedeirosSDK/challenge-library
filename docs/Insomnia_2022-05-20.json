@@ -1,0 +1,278 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-05-20T22:54:33.935Z",
+  "__export_source": "insomnia.desktop.app:v2021.7.2",
+  "resources": [
+    {
+      "_id": "req_a69be913254544808e8f308428a03754",
+      "parentId": "wrk_2f797fb8148d4cd093aea8859dd94121",
+      "modified": 1653083845615,
+      "created": 1652980269366,
+      "url": "{{ _.baseUlrl }}/reset-password",
+      "name": "Reset password",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"token\": \"\",\n\t\"password\": \"12345678\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_711af9a6699d4c54b9d6917fc29cab43"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1652980269366,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_2f797fb8148d4cd093aea8859dd94121",
+      "parentId": null,
+      "modified": 1652581906231,
+      "created": 1652581906231,
+      "name": "Challenge Library",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_206ec590af7844d891822f602e8d296b",
+      "parentId": "wrk_2f797fb8148d4cd093aea8859dd94121",
+      "modified": 1653063613303,
+      "created": 1652972893329,
+      "url": "{{ _.baseUlrl }}/send-forgot-password",
+      "name": "Admin send-forgot-password",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"jonh@doe.com\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_8d2ef6fdd77449ee89313684a1a3ee79"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1652972893329,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_73873648ae844478b122ae30b3e21805",
+      "parentId": "wrk_2f797fb8148d4cd093aea8859dd94121",
+      "modified": 1652986725777,
+      "created": 1652969716646,
+      "url": "{{ _.baseUlrl }}/library/admin/:libraryId",
+      "name": "Delete library admin",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1652969716646,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_2e237b27763343788eefb5698fc02e63",
+      "parentId": "wrk_2f797fb8148d4cd093aea8859dd94121",
+      "modified": 1653063612165,
+      "created": 1652806889623,
+      "url": "{{ _.baseUlrl }}/admin",
+      "name": "Create Admin",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"John Doe\",\n\t\"username\": \"john\",\n\t\"email\": \"john@doe.com\",\n\t\"password\": \"12345678\",\n\t\"libraryId\": \"f53ad770-9044-4344-9b68-e2ab0deca69a\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_1f7e954152b4498f881114f1fab31625"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1652806889623,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_95b0331bf08845e0975b1de11c2478c8",
+      "parentId": "wrk_2f797fb8148d4cd093aea8859dd94121",
+      "modified": 1653063611336,
+      "created": 1652755854112,
+      "url": "{{ _.baseUlrl }}/book",
+      "name": "Update Book",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"id\": \"eae0fb70-6f9f-4ca4-bed5-480d9789200a\",\n\t\"edition\": \"2020\",\n\t\"state\": \"NEW\",\n\t\"library\": \"99fe8412-9373-4eb6-81af-a1af60129f68\",\n\t\"libraryBookId\": \"6357c6d4-20ee-4248-a620-326aad0b0fc3\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_996a68e4b2094a3299b0fd0e86af1985"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1652755854112,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1797b810763b429084dfebcbe5fbb470",
+      "parentId": "wrk_2f797fb8148d4cd093aea8859dd94121",
+      "modified": 1653083842837,
+      "created": 1652742769216,
+      "url": "{{ _.baseUlrl }}/book",
+      "name": "Create Book",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"title\": \"Um livro\",\n\t\"edition\": \"2012\",\n\t\"year\": 2020,\n\t\"releaseDate\": \"{% now 'iso-8601', '' %}\",\n\t\"state\": \"NEW\",\n\t\"libraryId\": \"1358365f-7505-4d59-88e4-f80f7cb50b49\",\n\t\"inventory\": 10,\n\t\"street\": \"Av. Paulista\",\n\t\"city\": \"são paulo\",\n\t\"stateAddress\": \"SP\",\n\t\"zip\": \"11010001\",\n\t\"streetNumber\": \"01\",\n\t\"complement\": \"Perto de algum lugar\",\n\t\"latitude\": \"-23\",\n\t\"longitude\": \"-47\"\n}\n"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_2eec8fbe1d6e46a2b436bc7586f434ed"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1652742769216,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4a474352497a47dc99e6aeef9c45cd67",
+      "parentId": "wrk_2f797fb8148d4cd093aea8859dd94121",
+      "modified": 1653083842140,
+      "created": 1652627805076,
+      "url": "{{ _.baseUlrl }}/library",
+      "name": "Create Library",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\":\"Sebo SP\",\n\t\"adminId\": \"123456-78910-111213\",\n\t\"street\": \"Av. Paulista\",\n\t\"city\": \"são paulo\",\n\t\"state\": \"SP\",\n\t\"zip\": \"11010001\",\n\t\"streetNumber\": \"01\",\n\t\"complement\": \"Perto de algum lugar\",\n\t\"latitude\": \"-23\",\n\t\"longitude\": \"-47\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_032840e9a80245f2945cee5dc0dc9a38"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1652627805076,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_4ec81146a33549e990ccdffa6eb67c00",
+      "parentId": "wrk_2f797fb8148d4cd093aea8859dd94121",
+      "modified": 1652581906233,
+      "created": 1652581906233,
+      "name": "Base Environment",
+      "data": { "baseUlrl": "{{protocol}}://{{host}}:{{port}}" },
+      "dataPropertyOrder": { "&": ["baseUlrl"] },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1643840901613,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_b1ebf65cfc254e5385cefc2652516a62",
+      "parentId": "wrk_2f797fb8148d4cd093aea8859dd94121",
+      "modified": 1652581906237,
+      "created": 1652581906237,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_641c68e51a6348c39cc2e9a255b9d114",
+      "parentId": "wrk_2f797fb8148d4cd093aea8859dd94121",
+      "modified": 1652581906274,
+      "created": 1652581906239,
+      "fileName": "Challenge Library",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_6aabff5ce6a346179282dac9a838c0c7",
+      "parentId": "env_4ec81146a33549e990ccdffa6eb67c00",
+      "modified": 1652581906234,
+      "created": 1652581906234,
+      "name": "Development",
+      "data": { "protocol": "http", "host": "localhost", "port": "3333" },
+      "dataPropertyOrder": { "&": ["protocol", "host", "port"] },
+      "color": "#ff0000",
+      "isPrivate": false,
+      "metaSortKey": 1643840935060,
+      "_type": "environment"
+    }
+  ]
+}
